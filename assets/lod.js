@@ -33,8 +33,8 @@ function setValues(newEntry){
     document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i];
     if("os"+i in response[newEntry]){
         if (response[newEntry]["os"+i] == "") { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
-        else { document.getElementById("option"+i).className = "btn btn-danger btn-lg btn-block"; }
-        }else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
+        else { document.getElementById("option"+i).className = "btn btn-outline-danger btn-lg btn-block"; }
+        }else { document.getElementById("option"+i).className = "btn btn-outline-dark btn-lg btn-block"; }
 
     }
 }
