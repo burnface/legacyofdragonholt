@@ -23,7 +23,6 @@ $(window).on('hashchange', function() {
 
 function setValues(newEntry) {
     if (response[newEntry] == undefined) {
-        window.location.hash = '#' + currenthash;
         throw "No Data";
     }
     currenthash = newEntry;
