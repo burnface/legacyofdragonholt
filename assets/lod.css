@@ -5,6 +5,7 @@ html {
 body {
   margin-bottom: 20px; /* Margin bottom by footer height */
   font-family: 'Merriweather', serif;
+  font-size: 1.2rem; /* Make font a little larger */
   background-color: #eecda3;
 }
 .footer {
@@ -16,14 +17,14 @@ body {
 }
 
 .btn:focus,.btn:active {
-   outline: none !important;
+   outline: none !important; /* Remove ugly outline on clicked button */
    box-shadow: none;
 }
 
 .btn-danger {
-    background-color: #c62828;
+    background-color: #c62828; /* Custom red */
 }
 
 .btn-danger:hover {
-    background-color: #b71c1c;
+    background-color: #b71c1c; /* Custom hover red */
 }
