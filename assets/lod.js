@@ -29,29 +29,32 @@ function setValues(newEntry){
     if("ov"+i in response[newEntry]){
     document.getElementById("option"+i).value = response[newEntry]["ov"+i];
     document.getElementById("option"+i).style.visibility = "visible";
-    } else document.getElementById("option"+i).style.visibility = "hidden";    
+    } else document.getElementById("option"+i).style.visibility = "hidden";   
+	
 	//Set button text
 	if("od"+i in response[newEntry]){
     document.getElementById("option"+i).innerHTML = response[newEntry]["od"+i];
     } else { document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i]; }	
+	
 	//Set effect text
+	//An action with effect
 	if(("op"+i in response[newEntry]) && ("od"+i in response[newEntry])) {
-    document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; 
-	} else if(!("op"+i in response[newEntry]) && ("od"+i in response[newEntry])){
-    document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["ot"+i] + "</em>"; 
-	} else if(("ot"+i in response[newEntry]) && ("op"+i in response[newEntry])) { 
-	document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["op"+i] + "</em>"; 
-	} else { 
-	document.getElementById("effect"+i).innerHTML = ""; 
-	}	
+    document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; 	} 
+	//An action without effect
+	else if(!("op"+i in response[newEntry]) && ("od"+i in response[newEntry])){
+    document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["ot"+i] + "</em>"; } 
+	//Not action with effect
+	else if(("ot"+i in response[newEntry]) && ("op"+i in response[newEntry])) { 
+	document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["op"+i] + "</em>"; } 
+	//Not action without effect
+	else { 
+	document.getElementById("effect"+i).innerHTML = ""; }	
+	
 	//Set button style
     if("os"+i in response[newEntry]){
         if(response[newEntry]["os"+i] == "") { 
 		document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; 
-		}
-        else { document.getElementById("option"+i).className = "btn btn-danger btn-lg btn-block"; }
-        } 
-		else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
-        
+		} else { document.getElementById("option"+i).className = "btn btn-danger btn-lg btn-block"; }
+        } else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }        
     }
 }
