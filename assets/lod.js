@@ -4,21 +4,19 @@
 }
 function MoveToEntry(newEntryid){
     setValues(newEntryid);
-    if(history.pushState) {
-        // IE10, Firefox, Chrome, etc.
-        window.history.pushState(null, null, '#' + newEntryid);
-    } else {
-        // IE9, IE8, etc
-        window.location.hash = '#!' + newEntryid;
-    }
-    document.getElementById("savefield").innerHTML = "Сохранить текущую страницу: https://phenomen.github.io/legacyofdragonholt/#" + newEntryid;
+    if(newEntryid != "1"){
+    window.location.hash = '#' + newEntryid;
+    document.getElementById("savefield").innerHTML = '<input id="save" class="form-control" type="text" value="https://phenomen.github.io/legacyofdragonholt/#' + newEntryid + '" onClick="this.setSelectionRange(0, this.value.length)" readonly>';
+    }else document.getElementById("savefield").innerHTML = "";
 }
 var currenthash;
 $(window).on('hashchange', function() {
-    var newEntryid = location.hash.slice(1).toString();
+    if(location.hash != ""){
+    var newEntryid = location.hash.slice(1);
     if(currenthash != newEntryid){
         MoveToEntry(newEntryid);
     }
+}else MoveToEntry("1");
 });
 function setValues(newEntry){
     currenthash = newEntry;
