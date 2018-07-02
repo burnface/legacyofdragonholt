@@ -4,7 +4,7 @@
 }
 function MoveToEntry(newEntryid){
     setValues(newEntryid);
-    if (history.pushState) {
+    if(history.pushState) {
         // IE10, Firefox, Chrome, etc.
         window.history.pushState(null, null, '#' + newEntryid);
     } else {
@@ -35,12 +35,23 @@ function setValues(newEntry){
     document.getElementById("option"+i).innerHTML = response[newEntry]["od"+i];
     } else { document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i]; }	
 	//Set effect text
-	if("op"+i in response[newEntry]){
-    document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; }		
+	if(("op"+i in response[newEntry]) && ("os"+i in response[newEntry])) {
+    document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; 
+	} else if(!("op"+i in response[newEntry]) && ("os"+i in response[newEntry])){
+    document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["ot"+i] + "</em>"; 
+	} else if(("ot"+i in response[newEntry]) && ("op"+i in response[newEntry])) { 
+	document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["op"+i] + "</em>"; 
+	} else { 
+	document.getElementById("effect"+i).innerHTML = ""; 
+	}	
 	//Set button style
     if("os"+i in response[newEntry]){
-        if (response[newEntry]["os"+i] == "") { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
+        if(response[newEntry]["os"+i] == "") { 
+		document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; 
+		}
         else { document.getElementById("option"+i).className = "btn btn-danger btn-lg btn-block"; }
-        } else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
+        } 
+		else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
+        
     }
 }
