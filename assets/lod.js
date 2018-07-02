@@ -35,9 +35,9 @@ function setValues(newEntry){
     document.getElementById("option"+i).innerHTML = response[newEntry]["od"+i];
     } else { document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i]; }	
 	//Set effect text
-	if(("op"+i in response[newEntry]) && ("os"+i in response[newEntry])) {
+	if(("op"+i in response[newEntry]) && ("od"+i in response[newEntry])) {
     document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; 
-	} else if(!("op"+i in response[newEntry]) && ("os"+i in response[newEntry])){
+	} else if(!("op"+i in response[newEntry]) && ("od"+i in response[newEntry])){
     document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["ot"+i] + "</em>"; 
 	} else if(("ot"+i in response[newEntry]) && ("op"+i in response[newEntry])) { 
 	document.getElementById("effect"+i).innerHTML = "<em>➥ " + response[newEntry]["op"+i] + "</em>"; 
