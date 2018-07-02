@@ -24,17 +24,23 @@ function setValues(newEntry){
     currenthash = newEntry;
     document.getElementById("story").innerHTML = response[newEntry].s;
 
-    for (var i = 1; i < 7; i++) {   
+    for (var i = 1; i < 7; i++) {  
+    //Set button visibility
     if("ov"+i in response[newEntry]){
     document.getElementById("option"+i).value = response[newEntry]["ov"+i];
     document.getElementById("option"+i).style.visibility = "visible";
-    }else document.getElementById("option"+i).style.visibility = "hidden";
-    //if("ot"+i in response[newEntry]) //Если есть путь, то есть и название пути?
-    document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i];
+    } else document.getElementById("option"+i).style.visibility = "hidden";    
+	//Set button text
+	if("od"+i in response[newEntry]){
+    document.getElementById("option"+i).innerHTML = response[newEntry]["od"+i];
+    } else { document.getElementById("option"+i).innerHTML = response[newEntry]["ot"+i]; }	
+	//Set effect text
+	if("op"+i in response[newEntry]){
+    document.getElementById("effect"+i).innerHTML = "<em>" + response[newEntry]["op"+i] + "<br>➥ " + response[newEntry]["ot"+i] + "</em>"; }		
+	//Set button style
     if("os"+i in response[newEntry]){
         if (response[newEntry]["os"+i] == "") { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
         else { document.getElementById("option"+i).className = "btn btn-danger btn-lg btn-block"; }
-        }else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
-
+        } else { document.getElementById("option"+i).className = "btn btn-dark btn-lg btn-block"; }
     }
 }
