@@ -1,4 +1,4 @@
-﻿
+
 function selectOption(op) {
   var newEntry = document.getElementById("option" + op).value
   MoveToEntry(newEntry);
@@ -22,8 +22,13 @@ $(window).on('hashchange', function() {
 });
 
 function setValues(newEntry) {
-  currenthash = newEntry;
-  document.getElementById("story").innerHTML = response[newEntry].s;
+    if (response[newEntry] == undefined) {
+        window.location.hash = '#' + currenthash;
+        throw "No Data";
+    }
+    currenthash = newEntry;
+
+    document.getElementById("story").innerHTML = response[newEntry].s;
 
   for (var i = 1; i < 7; i++) {
     //Set button visibility
