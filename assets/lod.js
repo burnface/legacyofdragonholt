@@ -2,6 +2,7 @@
 function selectOption(op) {
   var newEntry = document.getElementById("option" + op).value
   MoveToEntry(newEntry);
+  $('html,body').scrollTop(0);
 }
 
 function MoveToEntry(newEntryid) {
